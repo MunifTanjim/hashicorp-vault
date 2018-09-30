@@ -16,7 +16,6 @@
       "name": "root_token_pgp_key",
       "type": "string",
       "required": false,
-      "default": "",
       "description": "Specifies a PGP public key used to encrypt the initial root token. (base64-encoded)."
     },
     {
