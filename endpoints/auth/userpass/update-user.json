@@ -1,0 +1,46 @@
+{
+  "method": "post",
+  "summary": "Update an existing user.",
+  "path": "/auth/userpass/users/:username",
+  "parameters": [
+    {
+      "name": "username",
+      "type": "string",
+      "required": true,
+      "description": "The username for the user."
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "required": false,
+      "description": "The password for the user."
+    },
+    {
+      "name": "policies",
+      "type": "string",
+      "required": false,
+      "description": "Comma-separated list of policies."
+    },
+    {
+      "name": "ttl",
+      "type": "string",
+      "required": false,
+      "description": "The lease duration which decides login expiration."
+    },
+    {
+      "name": "max_ttl",
+      "type": "string",
+      "required": false,
+      "description": "Maximum duration after which login should expire."
+    },
+    {
+      "name": "bound_cidrs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Comma-separated list of policies."
+    }
+  ]
+}

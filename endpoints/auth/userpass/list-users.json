@@ -1,0 +1,6 @@
+{
+  "method": "list",
+  "summary": "List available userpass users.",
+  "path": "/auth/userpass/users",
+  "parameters": []
+}

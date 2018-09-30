@@ -1,0 +1,49 @@
+{
+  "name": "hashicorp-vault",
+  "version": "0.0.1",
+  "description": "HashiCorp Vault API client for Node.js",
+  "keywords": [
+    "hashicorp",
+    "vault",
+    "api-client"
+  ],
+  "homepage": "https://github.com/MunifTanjim/hashicorp-vault#readme",
+  "bugs": "https://github.com/MunifTanjim/hashicorp-vault/issues",
+  "license": "MIT",
+  "author": "MunifTanjim (https://muniftanjim.com)",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "main": "src/index.js",
+  "repository": "github:MunifTanjim/hashicorp-vault",
+  "scripts": {
+    "generate:routes": "node scripts/generate-routes.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "before-after-hook": "^1.1.0",
+    "fetch": "^1.1.0",
+    "is-plain-object": "^2.0.4",
+    "node-fetch": "^2.2.0",
+    "url-template": "^2.0.8"
+  },
+  "devDependencies": {
+    "clean-deep": "^3.0.2",
+    "deep-sort-object": "^1.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.7.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "fs-extra": "^7.0.0",
+    "jest": "^23.6.0",
+    "lodash": "^4.17.11",
+    "prettier": "^1.14.3",
+    "recursive-readdir": "^2.2.2"
+  }
+}

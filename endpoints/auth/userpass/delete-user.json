@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "This endpoint deletes the user from the method.",
+  "path": "/auth/userpass/users/:username",
+  "parameters": [
+    {
+      "name": "username",
+      "type": "string",
+      "required": true,
+      "description": "The username for the user."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "method": "put",
+  "summary": "This endpoint initializes a new Vault.",
+  "path": "/sys/init",
+  "parameters": [
+    {
+      "name": "pgp_keys",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Specifies an array of PGP public keys used to encrypt the output unseal keys. (base64-encoded)."
+    },
+    {
+      "name": "root_token_pgp_key",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Specifies a PGP public key used to encrypt the initial root token. (base64-encoded)."
+    },
+    {
+      "name": "secret_shares",
+      "type": "integer",
+      "required": true,
+      "description": "Specifies the number of shares to split the master key into."
+    },
+    {
+      "name": "secret_threshold",
+      "type": "integer",
+      "required": true,
+      "description": "Specifies the number of shares required to reconstruct the master key."
+    }
+  ]
+}

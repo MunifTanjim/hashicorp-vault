@@ -1,0 +1,6 @@
+{
+  "method": "put",
+  "summary": "This endpoint seals the Vault.",
+  "path": "/sys/seal",
+  "parameters": []
+}

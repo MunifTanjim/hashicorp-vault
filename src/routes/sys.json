@@ -1,0 +1,45 @@
+{
+  "readInitializationStatus": {
+    "method": "get",
+    "path": "/sys/init"
+  },
+  "seal": {
+    "method": "put",
+    "path": "/sys/seal"
+  },
+  "startInitialization": {
+    "method": "put",
+    "params": {
+      "pgp_keys": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "root_token_pgp_key": {
+        "type": "string"
+      },
+      "secret_shares": {
+        "required": true,
+        "type": "integer"
+      },
+      "secret_threshold": {
+        "required": true,
+        "type": "integer"
+      }
+    },
+    "path": "/sys/init"
+  },
+  "submitUnsealKey": {
+    "method": "put",
+    "params": {
+      "key": {
+        "type": "string"
+      },
+      "reset": {
+        "type": "boolean"
+      }
+    },
+    "path": "/sys/unseal"
+  }
+}

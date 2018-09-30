@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "summary": "Reads the properties of an existing username.",
+  "path": "/auth/userpass/users/:username",
+  "parameters": [
+    {
+      "name": "username",
+      "type": "string",
+      "required": true,
+      "description": "The username for the user."
+    }
+  ]
+}

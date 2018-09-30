@@ -1,0 +1,6 @@
+{
+  "method": "get",
+  "summary": "This endpoint returns the initialization status of Vault.",
+  "path": "/sys/init",
+  "parameters": []
+}

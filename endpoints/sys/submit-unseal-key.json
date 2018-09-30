@@ -1,0 +1,17 @@
+{
+  "method": "put",
+  "summary": "This endpoint is used to enter a single master key share to progress the unsealing of the Vault.",
+  "path": "/sys/unseal",
+  "parameters": [
+    {
+      "name": "key",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "reset",
+      "type": "boolean",
+      "required": false
+    }
+  ]
+}
