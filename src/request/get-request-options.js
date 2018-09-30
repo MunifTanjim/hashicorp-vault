@@ -48,7 +48,9 @@ const getRequestOptions = (endpointOptions = {}) => {
 
   if (!['get', 'head'].includes(method)) {
     if (Object.keys(remainingParams).length) {
-      body = JSON.stringify(remainingParams)
+      body = JSON.stringify(
+        remainingParams._data ? remainingParams._data : remainingParams
+      )
     }
   }
 
