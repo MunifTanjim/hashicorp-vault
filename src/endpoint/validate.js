@@ -1,4 +1,4 @@
-const HTTPError = require('../request/http-error.js')
+const { VaultError } = require('../request/vault-error.js')
 
 const validate = (paramsSpecs = {}, params) => {
   Object.entries(paramsSpecs).forEach(([paramName, spec]) => {
@@ -13,18 +13,20 @@ const validate = (paramsSpecs = {}, params) => {
     }
 
     if (spec.required && !valueIsPresent) {
-      throw new HTTPError(`Parameter required: '${paramName}'`, 4002)
+      throw new VaultError(`Parameter required: '${paramName}'`, {
+        status: 400
+      })
     }
 
     if (expectedType === 'integer') {
       let unparsedParam = param
       param = parseInt(param, 10)
       if (Number.isNaN(param)) {
-        throw new HTTPError(
+        throw new VaultError(
           `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
             unparsedParam
           )}, Expected Type: ${expectedType}`,
-          4002
+          { status: 400 }
         )
       }
     }
@@ -35,11 +37,11 @@ const validate = (paramsSpecs = {}, params) => {
           ? ['false', 'true'].includes(param)
           : typeof param === 'boolean'
       if (!valueIsBoolean) {
-        throw new HTTPError(
+        throw new VaultError(
           `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
             param
           )}, Expected Type: ${expectedType}`,
-          4002
+          { status: 400 }
         )
       }
     }
@@ -52,17 +54,17 @@ const validate = (paramsSpecs = {}, params) => {
           expectedItemType === 'integer' &&
           param.some(item => Number.isNaN(parseInt(item, 10)))
         ) {
-          throw new HTTPError(
+          throw new VaultError(
             `Invalid Type of '${paramName}' items, Expected Type: ${expectedItemType}`,
-            4002
+            { status: 400 }
           )
         }
       } else {
-        throw new HTTPError(
+        throw new VaultError(
           `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
             param
           )}, Expected Type: ${expectedType}`,
-          4002
+          { status: 400 }
         )
       }
     }
