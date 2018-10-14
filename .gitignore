@@ -64,6 +64,8 @@ typings/
 **/*.d.ts
 
 # Others
+__tests__
 cache
 dist
 docs
+vault-test.js

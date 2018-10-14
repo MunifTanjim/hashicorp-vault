@@ -8,6 +8,7 @@ const monkeyPatch = (paramsSpecs = {}, params) => {
     params.kvDir = kvDir
     params.path = path
   }
+
   return params
 }
 

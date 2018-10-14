@@ -1,33 +1,36 @@
 const Hook = require('before-after-hook')
 
-const { version } = require('../package.json')
+const defaultClientConfig = require('./config.js')
 
 const deepmerge = require('./utils/deepmerge.js')
 const request = require('./request/index.js')
 
 const Plugins = [
-  require('./plugins/auth/index.js'),
-  require('./plugins/secret/index.js'),
-  require('./plugins/sys/index.js')
+  require('./plugins/endpoint-methods/index.js'),
+  require('./plugins/helpers/index.js')
 ]
 
-const CLIENT_DEFAULTS = {
-  baseUrl: `http://localhost:8200/v1`,
-  headers: {
-    'user-agent': `NodeHashicorpVault/${version}`
-  },
-  options: {
-    timeout: 0
-  }
-}
-
 class Vault {
-  constructor(options = {}) {
-    this.options = deepmerge(CLIENT_DEFAULTS, options)
+  constructor(clientConfig = {}) {
+    let {
+      address,
+      namespace,
+      routePrefix,
+      token,
+      headers,
+      options
+    } = deepmerge(defaultClientConfig, clientConfig)
+
+    this.config = {
+      baseUrl: `${address.replace(/\/+$/, '')}${routePrefix}`,
+      headers,
+      options
+    }
+
+    this.namespace = namespace
+    this.token = token
 
     this.hook = new Hook()
-
-    this.token = null
 
     this.request = this.request.bind(this)
 
@@ -39,8 +42,9 @@ class Vault {
   }
 
   request(options = {}) {
-    // merge clientOptions with requestOptions
-    return this.hook('request', deepmerge(this.options, options), request)
+    // create hook: request
+    // merge clientConfig with requestOptions
+    return this.hook('request', deepmerge(this.config, options), request)
   }
 }
 

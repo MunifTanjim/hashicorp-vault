@@ -19,11 +19,7 @@ const endpointMethod = (
     .then(apiClient.request)
 
   if (callback) {
-    promise
-      .then(response => {
-        callback(null, response)
-      })
-      .catch(callback)
+    promise.then(response => callback(null, response)).catch(callback)
     return
   }
 

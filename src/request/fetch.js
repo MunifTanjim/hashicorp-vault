@@ -1,42 +1,45 @@
 const fetch = require('node-fetch')
 
-const { VaultError, HTTP_STATUS_CODES } = require('./vault-error.js')
+const VaultError = require('../vault-error.js')
+const VaultHttpStatusCodes = require('../vault-http-status-codes.json')
 
-const getFormattedResponse = response => {
-  let contentType = response.headers.get('content-type')
+const defaultResponseFormatter = res => {
+  let Response = {
+    headers: {},
+    meta: {}
+  }
+
+  for (let [field, value] of res.headers.entries()) {
+    Response.headers[field] = value
+  }
+
+  Response.meta.status = res.status
+
+  if (res.status === 204 || res.status >= 400) {
+    Response.meta.statusText = VaultHttpStatusCodes[res.status]
+  }
+
+  if (res.status === 204) {
+    return Response
+  }
+
+  let contentType = res.headers.get('content-type')
 
   if (!/application\/json/.test(contentType)) {
-    return
+    return Response
   }
 
-  let headers = {}
+  return res.json().then(({ data, errors, ...meta }) => {
+    Response.meta = Object.assign({}, meta, Response.meta)
 
-  for (let [field, value] of response.headers.entries()) {
-    headers[field] = value
-  }
-
-  let statusInfo = {
-    status: response.status
-  }
-
-  if (response.status >= 400) {
-    statusInfo.statusText = HTTP_STATUS_CODES[response.status]
-  }
-
-  if ([204, 205].includes(response.status)) {
-    return {
-      meta: statusInfo,
-      headers
+    if (res.status >= 500) {
+      throw new VaultError(errors, Response.meta, Response.headers)
     }
-  }
 
-  return response.json().then(({ data, errors, ...metaInfo }) => {
-    return {
-      data,
-      errors,
-      headers,
-      meta: Object.assign({}, metaInfo, statusInfo)
-    }
+    Response.data = data
+    Response.errors = errors
+
+    return Response
   })
 }
 
@@ -47,7 +50,15 @@ const getFormattedResponse = response => {
  * @throws {VaultError} on failure
  */
 const request = requestOptions => {
-  let { method, url, headers, body, timeout } = requestOptions
+  let {
+    method,
+    url,
+    headers,
+    body,
+    retries,
+    timeout,
+    responseFormatter
+  } = requestOptions
 
   // https://fetch.spec.whatwg.org/#methods
   method = method.toUpperCase()
@@ -59,22 +70,17 @@ const request = requestOptions => {
     timeout
   }
 
-  return fetch(url, options)
-    .then(response => {
-      if (response.status >= 500) {
-        return getFormattedResponse(response).then(
-          ({ errors, meta, headers }) => {
-            throw new VaultError(errors, meta, headers)
-          }
-        )
-      }
+  if (typeof responseFormatter !== 'function') {
+    responseFormatter = defaultResponseFormatter
+  }
 
-      return getFormattedResponse(response)
-    })
+  return fetch(url, options)
+    .then(responseFormatter)
     .catch(error => {
       if (error instanceof VaultError) {
         throw error
       }
+
       throw new VaultError(error.message)
     })
 }

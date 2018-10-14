@@ -1,4 +1,4 @@
-const { VaultError } = require('../request/vault-error.js')
+const VaultError = require('../vault-error.js')
 
 const validate = (paramsSpecs = {}, params) => {
   Object.entries(paramsSpecs).forEach(([paramName, spec]) => {
@@ -23,7 +23,7 @@ const validate = (paramsSpecs = {}, params) => {
       param = parseInt(param, 10)
       if (Number.isNaN(param)) {
         throw new VaultError(
-          `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
+          `Invalid Type for Parameter '${paramName}': ${JSON.stringify(
             unparsedParam
           )}, Expected Type: ${expectedType}`,
           { status: 400 }
@@ -32,13 +32,11 @@ const validate = (paramsSpecs = {}, params) => {
     }
 
     if (expectedType === 'boolean') {
-      let valueIsBoolean =
-        typeof param === 'string'
-          ? ['false', 'true'].includes(param)
-          : typeof param === 'boolean'
+      let valueIsBoolean = typeof param === 'boolean'
+
       if (!valueIsBoolean) {
         throw new VaultError(
-          `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
+          `Invalid Type for Parameter '${paramName}': ${JSON.stringify(
             param
           )}, Expected Type: ${expectedType}`,
           { status: 400 }
@@ -47,23 +45,34 @@ const validate = (paramsSpecs = {}, params) => {
     }
 
     if (expectedType === 'array') {
-      if (Array.isArray(param)) {
-        let expectedItemType = spec.items.type
-
-        if (
-          expectedItemType === 'integer' &&
-          param.some(item => Number.isNaN(parseInt(item, 10)))
-        ) {
-          throw new VaultError(
-            `Invalid Type of '${paramName}' items, Expected Type: ${expectedItemType}`,
-            { status: 400 }
-          )
-        }
-      } else {
+      if (!Array.isArray(param)) {
         throw new VaultError(
           `Invalid Type of Parameter '${paramName}': ${JSON.stringify(
             param
           )}, Expected Type: ${expectedType}`,
+          { status: 400 }
+        )
+      }
+
+      let expectedItemType = spec.items.type
+
+      if (expectedItemType === 'integer') {
+        param = param.map(item => parseInt(item, 10))
+
+        if (param.some(item => Number.isNaN(item))) {
+          throw new VaultError(
+            `Invalid Type for '${paramName}' items, Expected Type: ${expectedItemType}`,
+            { status: 400 }
+          )
+        }
+      }
+
+      if (
+        expectedItemType === 'string' &&
+        param.some(item => typeof item !== 'string')
+      ) {
+        throw new VaultError(
+          `Invalid Type for '${paramName}' items, Expected Type: ${expectedItemType}`,
           { status: 400 }
         )
       }

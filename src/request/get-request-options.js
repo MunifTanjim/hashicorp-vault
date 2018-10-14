@@ -1,15 +1,6 @@
 const urlTemplate = require('url-template')
 
-const deepmerge = require('../utils/deepmerge.js')
 const extractUrlVariableNames = require('../utils/extract-url-variable-names.js')
-
-const ENDPOINT_DEFAULTS = {
-  headers: {
-    'content-type': 'application/json; charset=utf-8'
-  },
-  method: 'GET',
-  options: {}
-}
 
 /**
  * Returns Request Options for HTTP client
@@ -25,7 +16,7 @@ const getRequestOptions = (endpointOptions = {}) => {
     url,
     options: otherOptions,
     ...params
-  } = deepmerge(ENDPOINT_DEFAULTS, endpointOptions)
+  } = endpointOptions
 
   // replace :var with {+var} to make it RFC 6570 compatible
   url = url.replace(/:([a-z]\w+)/g, '{+$1}')
