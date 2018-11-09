@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "Deletes an existing AppRole from the method.",
+  "path": "/auth/approle/role/:role_name",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "Name of the AppRole."
+    }
+  ]
+}

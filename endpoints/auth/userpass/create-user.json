@@ -40,7 +40,7 @@
         "type": "string"
       },
       "required": false,
-      "description": "Comma-separated list of policies."
+      "description": "Comma-separated string or list of CIDR blocks;"
     }
   ]
 }

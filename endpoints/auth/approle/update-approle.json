@@ -1,0 +1,82 @@
+{
+  "method": "post",
+  "summary": "Updates an existing AppRole.",
+  "path": "/auth/approle/role/:role_name",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "Name of the AppRole."
+    },
+    {
+      "name": "bind_secret_id",
+      "type": "boolean",
+      "required": false,
+      "description": "Require secret_id to be presented when logging in using this AppRole."
+    },
+    {
+      "name": "secret_id_bound_cidrs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Comma-separated string or list of CIDR blocks;"
+    },
+    {
+      "name": "token_bound_cidrs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Comma-separated string or list of CIDR blocks;"
+    },
+    {
+      "name": "policies",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Comma-separated list of policies set on tokens issued via this AppRole."
+    },
+    {
+      "name": "secret_id_num_uses",
+      "type": "integer",
+      "required": false,
+      "description": "Number of times any particular SecretID can be used to fetch a token from this AppRole, after which the SecretID will expire."
+    },
+    {
+      "name": "secret_id_ttl",
+      "type": "string",
+      "required": false,
+      "description": "Duration in either an integer number of seconds (3600) or an integer time unit (60m) after which any SecretID expires."
+    },
+    {
+      "name": "token_num_uses",
+      "type": "integer",
+      "required": false,
+      "description": "Number of times issued tokens can be used."
+    },
+    {
+      "name": "token_ttl",
+      "type": "string",
+      "required": false,
+      "description": "Duration in either an integer number of seconds (3600) or an integer time unit (60m) to set as the TTL for issued tokens and at renewal time."
+    },
+    {
+      "name": "token_max_ttl",
+      "type": "string",
+      "required": false,
+      "description": "Duration in either an integer number of seconds (3600) or an integer time unit (60m) after which the issued token can no longer be renewed."
+    },
+    {
+      "name": "period",
+      "type": "string",
+      "required": false,
+      "description": "Duration in either an integer number of seconds (3600) or an integer time unit (60m)."
+    }
+  ]
+}

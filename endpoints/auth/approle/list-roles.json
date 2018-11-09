@@ -1,0 +1,6 @@
+{
+  "method": "list",
+  "summary": "This endpoint returns a list the existing AppRoles in the method.",
+  "path": "/auth/approle/role",
+  "parameters": []
+}

@@ -1,0 +1,19 @@
+{
+  "method": "post",
+  "summary": "Issues a Vault token based on the presented credentials.",
+  "path": "/auth/approle/login",
+  "parameters": [
+    {
+      "name": "role_id",
+      "type": "string",
+      "required": true,
+      "description": "RoleID of the AppRole."
+    },
+    {
+      "name": "secret_id",
+      "type": "string",
+      "required": false,
+      "description": "SecretID belonging to AppRole."
+    }
+  ]
+}

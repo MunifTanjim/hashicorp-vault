@@ -1,0 +1,19 @@
+{
+  "method": "post",
+  "summary": "Updates the RoleID of an existing AppRole to a custom value.",
+  "path": "/auth/approle/role/:role_name/role-id",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "Name of the AppRole."
+    },
+    {
+      "name": "role_id",
+      "type": "string",
+      "required": true,
+      "description": "Value to be set as RoleID."
+    }
+  ]
+}

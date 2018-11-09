@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "summary": "Reads the RoleID of an existing AppRole.",
+  "path": "/auth/approle/role/:role_name/role-id",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "Name of the AppRole."
+    }
+  ]
+}
