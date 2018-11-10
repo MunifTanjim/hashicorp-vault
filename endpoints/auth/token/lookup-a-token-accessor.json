@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "summary": "Returns information about the client token from the accessor.",
+  "path": "/auth/token/lookup-accessor",
+  "parameters": [
+    {
+      "name": "accessor",
+      "type": "string",
+      "required": true,
+      "description": "Token accessor to lookup."
+    }
+  ]
+}

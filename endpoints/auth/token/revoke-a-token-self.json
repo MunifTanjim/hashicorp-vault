@@ -1,0 +1,6 @@
+{
+  "method": "post",
+  "summary": "Revokes the token used to call it and all child tokens.",
+  "path": "/auth/token/revoke-self",
+  "parameters": []
+}

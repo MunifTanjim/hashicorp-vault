@@ -1,0 +1,6 @@
+{
+  "method": "post",
+  "summary": "Performs some maintenance tasks to clean up invalid entries that may remain in the token store.",
+  "path": "/auth/token/tidy",
+  "parameters": []
+}

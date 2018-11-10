@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "summary": "Revokes a token but not its child tokens.",
+  "path": "/auth/token/revoke-orphan",
+  "parameters": [
+    {
+      "name": "token",
+      "type": "string",
+      "required": true,
+      "description": "Token to revoke."
+    }
+  ]
+}

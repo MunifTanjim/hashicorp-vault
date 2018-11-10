@@ -1,0 +1,6 @@
+{
+  "method": "list",
+  "summary": "List available token roles.",
+  "path": "/auth/token/roles",
+  "parameters": []
+}

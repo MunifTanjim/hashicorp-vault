@@ -1,0 +1,6 @@
+{
+  "method": "post",
+  "summary": "Returns information about the current client token.",
+  "path": "/auth/token/lookup-self",
+  "parameters": []
+}

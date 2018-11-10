@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "summary": "Revoke the token associated with the accessor and all the child tokens.",
+  "path": "/auth/token/revoke-accessor",
+  "parameters": [
+    {
+      "name": "accessor",
+      "type": "string",
+      "required": true,
+      "description": "Accessor of the token."
+    }
+  ]
+}

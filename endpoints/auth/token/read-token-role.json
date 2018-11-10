@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "summary": "Fetches the named role configuration.",
+  "path": "/auth/token/roles/:role_name",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "The name of the token role."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "summary": "Returns information about the client token.",
+  "path": "/auth/token/lookup",
+  "parameters": [
+    {
+      "name": "token",
+      "type": "string",
+      "required": true,
+      "description": "Token to lookup."
+    }
+  ]
+}

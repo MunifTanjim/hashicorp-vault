@@ -1,0 +1,13 @@
+{
+  "method": "post",
+  "summary": "Renews a lease associated with the calling token.",
+  "path": "/auth/token/renew-self",
+  "parameters": [
+    {
+      "name": "increment",
+      "type": "string",
+      "required": false,
+      "description": "An optional requested lease increment can be provided."
+    }
+  ]
+}

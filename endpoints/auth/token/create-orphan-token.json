@@ -1,0 +1,88 @@
+{
+  "method": "post",
+  "summary": "Creates a new orphan token.",
+  "path": "/auth/token/create-orphan",
+  "parameters": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "The ID of the client token."
+    },
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": false,
+      "description": "The name of the token role."
+    },
+    {
+      "name": "policies",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "A list of policies for the token."
+    },
+    {
+      "name": "meta",
+      "type": "object",
+      "required": false,
+      "description": "A map of string to string valued metadata."
+    },
+    {
+      "name": "no_parent",
+      "type": "boolean",
+      "required": false,
+      "description": "If true and set by a root caller, the token will not have the parent token of the caller."
+    },
+    {
+      "name": "no_default_policy",
+      "type": "boolean",
+      "required": false,
+      "description": "If true the default policy will not be contained in this token's policy set."
+    },
+    {
+      "name": "renewable",
+      "type": "boolean",
+      "required": false,
+      "description": "Set to false to disable the ability of the token to be renewed past its initial TTL."
+    },
+    {
+      "name": "lease",
+      "type": "string",
+      "required": false,
+      "description": "DEPRECATED; use ttl instead"
+    },
+    {
+      "name": "ttl",
+      "type": "string",
+      "required": false,
+      "description": "The TTL period of the token, provided as \"1h\", where hour is the largest suffix."
+    },
+    {
+      "name": "explicit_max_ttl",
+      "type": "string",
+      "required": false,
+      "description": "If set, the token will have an explicit max TTL set upon it."
+    },
+    {
+      "name": "display_name",
+      "type": "string",
+      "required": false,
+      "description": "The display name of the token."
+    },
+    {
+      "name": "num_uses",
+      "type": "integer",
+      "required": false,
+      "description": "The maximum uses for the given token."
+    },
+    {
+      "name": "period",
+      "type": "string",
+      "required": false,
+      "description": "If specified, the token will be periodic;"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "This endpoint deletes the named token role.",
+  "path": "/auth/token/roles/:role_name",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "The name of the token role."
+    }
+  ]
+}

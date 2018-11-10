@@ -1,0 +1,70 @@
+{
+  "method": "post",
+  "summary": "Creates (or replaces) the named role.",
+  "path": "/auth/token/roles/:role_name",
+  "parameters": [
+    {
+      "name": "role_name",
+      "type": "string",
+      "required": true,
+      "description": "The name of the token role."
+    },
+    {
+      "name": "allowed_policies",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "If set, tokens can be created with any subset of the policies in this list, rather than the normal semantics of tokens being a subset of the calling token's policies."
+    },
+    {
+      "name": "disallowed_policies",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "If set, successful token creation via this role will require that no policies in the given list are requested."
+    },
+    {
+      "name": "orphan",
+      "type": "boolean",
+      "required": false,
+      "description": "If true, tokens created against this policy will be orphan tokens (they will have no parent)."
+    },
+    {
+      "name": "period",
+      "type": "string",
+      "required": false,
+      "description": "If specified, the token will be periodic;"
+    },
+    {
+      "name": "renewable",
+      "type": "boolean",
+      "required": false,
+      "description": "Set to false to disable the ability of the token to be renewed past its initial TTL."
+    },
+    {
+      "name": "explicit_max_ttl",
+      "type": "string",
+      "required": false,
+      "description": "Provides a maximum lifetime for any tokens issued against this role, including periodic tokens."
+    },
+    {
+      "name": "path_suffix",
+      "type": "string",
+      "required": false,
+      "description": "If set, tokens created against this role will have the given suffix as part of their path in addition to the role name."
+    },
+    {
+      "name": "bound_cidrs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "If set, restricts usage of the generated token to client IPs falling within the range of the specified CIDR(s)."
+    }
+  ]
+}

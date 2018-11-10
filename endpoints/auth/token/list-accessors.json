@@ -1,0 +1,6 @@
+{
+  "method": "list",
+  "summary": "This endpoint lists token accessor.",
+  "path": "/auth/token/accessors",
+  "parameters": []
+}
