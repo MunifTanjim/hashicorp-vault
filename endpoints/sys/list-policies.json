@@ -1,0 +1,6 @@
+{
+  "method": "get",
+  "summary": "This endpoint lists all configured policies.",
+  "path": "/sys/policy",
+  "parameters": []
+}

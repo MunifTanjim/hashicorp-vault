@@ -1,0 +1,19 @@
+{
+  "method": "put",
+  "summary": "This endpoint adds a new or updates an existing ACL policy.",
+  "path": "/sys/policies/acl/:name",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the name of the policy to create."
+    },
+    {
+      "name": "policy",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the policy document."
+    }
+  ]
+}

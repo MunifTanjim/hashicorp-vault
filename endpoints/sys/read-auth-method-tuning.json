@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "summary": "This endpoint reads the given auth path's configuration.",
+  "path": "/sys/auth/:path/tune",
+  "parameters": [
+    {
+      "name": "path",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the path in which to tune."
+    }
+  ]
+}

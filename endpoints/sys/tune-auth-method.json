@@ -1,0 +1,65 @@
+{
+  "method": "post",
+  "summary": "Tune configuration parameters for a given auth path.",
+  "path": "/sys/auth/:path/tune",
+  "parameters": [
+    {
+      "name": "path",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the path in which to tune."
+    },
+    {
+      "name": "default_lease_ttl",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the default time-to-live."
+    },
+    {
+      "name": "max_lease_ttl",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the maximum time-to-live."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Specifies the description of the mount."
+    },
+    {
+      "name": "audit_non_hmac_request_keys",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Specifies the comma-separated list of keys that will not be HMAC'd by audit devices in the request data object."
+    },
+    {
+      "name": "audit_non_hmac_response_keys",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Specifies the comma-separated list of keys that will not be HMAC'd by audit devices in the response data object."
+    },
+    {
+      "name": "listing_visibility",
+      "type": "string",
+      "required": false,
+      "enum": ["unauth", ""],
+      "description": "Speficies whether to show this mount in the UI-specific listing endpoint."
+    },
+    {
+      "name": "passthrough_request_headers",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": false,
+      "description": "Comma-separated list of headers to whitelist and pass from the request to the backend."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "method": "head",
+  "summary": "This endpoint returns the health status of Vault.",
+  "path": "/sys/health",
+  "parameters": [
+    {
+      "name": "standbyok",
+      "type": "boolean",
+      "required": false,
+      "description": "pecifies if being a standby should still return the active status code instead of the standby status code."
+    },
+    {
+      "name": "activecode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for an active node."
+    },
+    {
+      "name": "standbycode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for a standby node."
+    },
+    {
+      "name": "drsecondarycode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for a DR secondary node."
+    },
+    {
+      "name": "performancestandbycode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for a performance standby node."
+    },
+    {
+      "name": "sealedcode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for a sealed node."
+    },
+    {
+      "name": "uninitcode",
+      "type": "integer",
+      "required": false,
+      "description": "Specifies the status code that should be returned for a uninitialized node."
+    }
+  ]
+}

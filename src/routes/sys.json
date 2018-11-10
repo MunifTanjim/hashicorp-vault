@@ -1,7 +1,219 @@
 {
+  "createOrUpdateAclPolicy": {
+    "method": "put",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "policy": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policies/acl/:name"
+  },
+  "createOrUpdatePolicy": {
+    "method": "put",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      },
+      "policy": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policy/:name"
+  },
+  "deleteAclPolicy": {
+    "method": "delete",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policies/acl/:name"
+  },
+  "deletePolicy": {
+    "method": "delete",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policy/:name"
+  },
+  "disableAuthMethod": {
+    "method": "delete",
+    "params": {
+      "path": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/auth/:path"
+  },
+  "enableAuthMethod": {
+    "method": "post",
+    "params": {
+      "config": {
+        "properties": {
+          "audit_non_hmac_request_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "audit_non_hmac_response_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "default_lease_ttl": {
+            "type": "string"
+          },
+          "listing_visibility": {
+            "type": "string"
+          },
+          "max_lease_ttl": {
+            "type": "string"
+          },
+          "passthrough_request_headers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "plugin_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": {
+        "type": "string"
+      },
+      "local": {
+        "type": "boolean"
+      },
+      "path": {
+        "required": true,
+        "type": "string"
+      },
+      "plugin_name": {
+        "type": "string"
+      },
+      "type": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/auth/:path"
+  },
+  "listAclPolicies": {
+    "method": "list",
+    "path": "/sys/policies/acl"
+  },
+  "listAuthMethods": {
+    "method": "get",
+    "path": "/sys/auth"
+  },
+  "listPolicies": {
+    "method": "get",
+    "path": "/sys/policy"
+  },
+  "readAclPolicy": {
+    "method": "get",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policies/acl/:name"
+  },
+  "readAuthMethodTuning": {
+    "method": "get",
+    "params": {
+      "path": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/auth/:path/tune"
+  },
+  "readHealthInformation": {
+    "method": "get",
+    "params": {
+      "activecode": {
+        "type": "integer"
+      },
+      "drsecondarycode": {
+        "type": "integer"
+      },
+      "performancestandbycode": {
+        "type": "integer"
+      },
+      "sealedcode": {
+        "type": "integer"
+      },
+      "standbycode": {
+        "type": "integer"
+      },
+      "standbyok": {
+        "type": "boolean"
+      },
+      "uninitcode": {
+        "type": "integer"
+      }
+    },
+    "path": "/sys/health"
+  },
+  "readHealthStatuscode": {
+    "method": "head",
+    "params": {
+      "activecode": {
+        "type": "integer"
+      },
+      "drsecondarycode": {
+        "type": "integer"
+      },
+      "performancestandbycode": {
+        "type": "integer"
+      },
+      "sealedcode": {
+        "type": "integer"
+      },
+      "standbycode": {
+        "type": "integer"
+      },
+      "standbyok": {
+        "type": "boolean"
+      },
+      "uninitcode": {
+        "type": "integer"
+      }
+    },
+    "path": "/sys/health"
+  },
   "readInitializationStatus": {
     "method": "get",
     "path": "/sys/init"
+  },
+  "readPolicy": {
+    "method": "get",
+    "params": {
+      "name": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/policy/:name"
   },
   "seal": {
     "method": "put",
@@ -36,10 +248,56 @@
       "key": {
         "type": "string"
       },
+      "migrate": {
+        "type": "boolean"
+      },
       "reset": {
         "type": "boolean"
       }
     },
     "path": "/sys/unseal"
+  },
+  "tuneAuthMethod": {
+    "method": "post",
+    "params": {
+      "audit_non_hmac_request_keys": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "audit_non_hmac_response_keys": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "default_lease_ttl": {
+        "type": "integer"
+      },
+      "description": {
+        "type": "string"
+      },
+      "listing_visibility": {
+        "enum": [
+          "unauth"
+        ],
+        "type": "string"
+      },
+      "max_lease_ttl": {
+        "type": "integer"
+      },
+      "passthrough_request_headers": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "path": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    "path": "/sys/auth/:path/tune"
   }
 }

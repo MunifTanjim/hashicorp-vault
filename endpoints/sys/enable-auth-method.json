@@ -1,0 +1,82 @@
+{
+  "method": "post",
+  "summary": "This endpoint enables a new auth method.",
+  "path": "/sys/auth/:path",
+  "parameters": [
+    {
+      "name": "path",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the path in which to enable the auth method."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Specifies a human-friendly description of the auth method."
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the name of the authentication method type, such as \"github\" or \"token\"."
+    },
+    {
+      "name": "config",
+      "type": "object",
+      "properties": {
+        "default_lease_ttl": {
+          "type": "string",
+          "description": "The default lease duration, specified as a string duration like \"5s\" or \"30m\"."
+        },
+        "max_lease_ttl": {
+          "type": "string",
+          "description": "The maximum lease duration, specified as a string duration like \"5s\" or \"30m\"."
+        },
+        "plugin_name": {
+          "type": "string",
+          "description": "The name of the plugin in the plugin catalog to use."
+        },
+        "audit_non_hmac_request_keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Comma-separated list of keys that will not be HMAC'd by audit devices in the request data object."
+        },
+        "audit_non_hmac_response_keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Comma-separated list of keys that will not be HMAC'd by audit devices in the response data object."
+        },
+        "listing_visibility": {
+          "type": "string",
+          "description": "Speficies whether to show this mount in the UI-specific listing endpoint."
+        },
+        "passthrough_request_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Comma-separated list of headers to whitelist and pass from the request to the backend."
+        }
+      },
+      "required": false,
+      "description": "Specifies configuration options for this auth method."
+    },
+    {
+      "name": "plugin_name",
+      "type": "string",
+      "required": false,
+      "description": "Specifies the name of the auth plugin to use based from the name in the plugin catalog."
+    },
+    {
+      "name": "local",
+      "type": "boolean",
+      "required": false,
+      "description": "Specifies if the auth method is local only."
+    }
+  ]
+}

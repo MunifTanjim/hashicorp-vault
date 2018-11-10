@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "This endpoint deletes the ACL policy with the given name.",
+  "path": "/sys/policies/acl/:name",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the name of the policy to delete."
+    }
+  ]
+}

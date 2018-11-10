@@ -1,0 +1,13 @@
+{
+  "method": "get",
+  "summary": "This endpoint retrieve the policy body for the named policy.",
+  "path": "/sys/policy/:name",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the name of the policy to retrieve."
+    }
+  ]
+}

@@ -6,12 +6,20 @@
     {
       "name": "key",
       "type": "string",
-      "required": false
+      "required": false,
+      "description": "Specifies a single master key share."
     },
     {
       "name": "reset",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "description": "Specifies if previously-provided unseal keys are discarded and the unseal process is reset."
+    },
+    {
+      "name": "migrate",
+      "type": "boolean",
+      "required": false,
+      "description": "Used to migrate the seal from shamir to autoseal or autoseal to shamir."
     }
   ]
 }

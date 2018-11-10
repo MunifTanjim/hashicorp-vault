@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "This endpoint disables the auth method at the given auth path.",
+  "path": "/sys/auth/:path",
+  "parameters": [
+    {
+      "name": "path",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the path to disable."
+    }
+  ]
+}

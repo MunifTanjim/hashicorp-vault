@@ -1,0 +1,13 @@
+{
+  "method": "delete",
+  "summary": "This endpoint deletes the policy with the given name.",
+  "path": "/sys/policy/:name",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Specifies the name of the policy to delete."
+    }
+  ]
+}

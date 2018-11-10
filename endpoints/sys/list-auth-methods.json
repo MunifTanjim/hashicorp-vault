@@ -1,0 +1,6 @@
+{
+  "method": "get",
+  "summary": "This endpoint lists all enabled auth methods.",
+  "path": "/sys/auth",
+  "parameters": []
+}

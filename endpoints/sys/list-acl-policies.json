@@ -1,0 +1,6 @@
+{
+  "method": "list",
+  "summary": "This endpoint lists all configured ACL policies.",
+  "path": "/sys/policies/acl",
+  "parameters": []
+}
